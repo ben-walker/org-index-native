@@ -1,9 +1,10 @@
+import { registerRootComponent } from "expo";
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 
-import { Providers } from "../providers";
+import { Providers } from "./features/providers";
 
-export const Root = () => (
+const App = () => (
   <Providers>
     <StatusBar style="auto" />
     {/* TODO: Replace with router */}
@@ -12,3 +13,5 @@ export const Root = () => (
     </View>
   </Providers>
 );
+
+registerRootComponent(App);
