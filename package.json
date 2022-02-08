@@ -10,6 +10,7 @@
   "scripts": {
     "android": "expo start --android",
     "eject": "expo eject",
+    "generate:graphql": "graphql-codegen --config codegen.yaml",
     "ios": "expo start --ios",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "start": "expo start",
@@ -29,6 +30,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@expo/config": "^6.0.16",
+    "@graphql-codegen/cli": "2.5.0",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
