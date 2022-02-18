@@ -6,7 +6,7 @@
   "engines": {
     "node": "16"
   },
-  "main": "./src/index.tsx",
+  "main": "./src/App.tsx",
   "scripts": {
     "android": "expo start --android",
     "eject": "expo eject",
