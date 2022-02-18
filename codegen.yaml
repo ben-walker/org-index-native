@@ -1,4 +1,4 @@
-schema: ../org-index-graph/schema.gql # TODO: Set this to remote (GitHub or URL)
+schema: ${CODEGEN_SCHEMA:../org-index-graph/schema.gql}
 documents: ./src/**/*.gql
 generates:
   ./src/generated/graphql.tsx:
