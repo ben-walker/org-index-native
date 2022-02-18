@@ -2,7 +2,7 @@ import { registerRootComponent } from "expo";
 import { StatusBar } from "expo-status-bar";
 import { Text, View } from "react-native";
 
-import { Providers } from "./features/providers";
+import { Providers } from "./providers";
 
 const App = () => (
   <Providers>
