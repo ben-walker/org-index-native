@@ -1,14 +1,18 @@
+import { ApolloProvider } from "@apollo/client";
+import { NavigationContainer } from "@react-navigation/native";
 import { registerRootComponent } from "expo";
 import { StatusBar } from "expo-status-bar";
 
-import { Providers } from "./providers";
+import { client } from "./graphql";
 import { RootNavigator } from "./root-navigator";
 
 const App = () => (
-  <Providers>
-    <StatusBar style="auto" />
-    <RootNavigator />
-  </Providers>
+  <ApolloProvider client={client}>
+    <NavigationContainer>
+      <StatusBar style="auto" />
+      <RootNavigator />
+    </NavigationContainer>
+  </ApolloProvider>
 );
 
 registerRootComponent(App);
