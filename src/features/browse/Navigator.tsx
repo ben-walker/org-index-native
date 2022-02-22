@@ -1,5 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
+import { FeedScreen } from "./FeedScreen";
+
 enum Screens {
   Feed = "Feed",
 }
@@ -12,6 +14,6 @@ const Stack = createNativeStackNavigator<ParamList>();
 
 export const BrowseNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name={Screens.Feed} component={() => null} />
+    <Stack.Screen name={Screens.Feed} component={FeedScreen} />
   </Stack.Navigator>
 );
