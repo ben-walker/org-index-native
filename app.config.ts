@@ -8,6 +8,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "automatic",
+  extra: {
+    graphUri: process.env.GRAPH_URI,
+  },
   splash: {
     image: "./assets/splash.png",
     resizeMode: "contain",
