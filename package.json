@@ -10,7 +10,7 @@
   "scripts": {
     "android": "expo start --android",
     "eject": "expo eject",
-    "generate:graphql": "graphql-codegen --config codegen.yaml",
+    "generate:graphql": "zeus --apollo ../org-index-graph/schema.gql ./src",
     "ios": "expo start --ios",
     "lint": "eslint . --ext .tsx,.ts,.js",
     "start": "expo start",
@@ -36,11 +36,6 @@
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@expo/config": "^6.0.16",
-    "@graphql-codegen/add": "^3.1.1",
-    "@graphql-codegen/cli": "^2.5.0",
-    "@graphql-codegen/typescript": "^2.4.3",
-    "@graphql-codegen/typescript-operations": "^2.2.4",
-    "@graphql-codegen/typescript-react-apollo": "^3.2.5",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
     "@typescript-eslint/eslint-plugin": "^5.10.2",
@@ -52,6 +47,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-react-native": "^4.0.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "graphql-zeus": "^4.0.4",
     "prettier": "^2.5.1",
     "typescript": "~4.3.5"
   }
