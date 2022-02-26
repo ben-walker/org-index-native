@@ -1,8 +1,8 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
-import { graphUri } from "../env";
+import { GRAPH_URI } from "../env";
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: graphUri,
+  uri: GRAPH_URI,
 });

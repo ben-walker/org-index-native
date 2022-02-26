@@ -1,3 +1,3 @@
 export type ManifestExtra = {
-  graphUri: string;
+  GRAPH_URI: string;
 };

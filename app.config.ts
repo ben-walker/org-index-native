@@ -9,7 +9,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   icon: "./assets/icon.png",
   userInterfaceStyle: "automatic",
   extra: {
-    graphUri: process.env.GRAPH_URI,
+    GRAPH_URI: process.env.GRAPH_URI,
   },
   splash: {
     image: "./assets/splash.png",
