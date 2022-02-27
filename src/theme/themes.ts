@@ -22,7 +22,6 @@ const palette = {
 };
 
 export const theme = createTheme({
-  dark: false,
   breakpoints: {},
   colors: {
     primary: palette.oceanBlue,
@@ -32,6 +31,7 @@ export const theme = createTheme({
     border: palette.lightGray,
     notification: palette.fireRed,
   },
+  dark: false,
   spacing: {
     s: 8,
     m: 16,
@@ -42,7 +42,6 @@ export const theme = createTheme({
 
 export const darkTheme: Theme = {
   ...theme,
-  dark: true,
   colors: {
     primary: palette.royalBlue,
     background: palette.pitchBlack,
@@ -51,9 +50,10 @@ export const darkTheme: Theme = {
     border: palette.gray,
     notification: palette.lightRed,
   },
+  dark: true,
 };
 
 export const themeMap: ThemeMap = {
-  light: theme,
   dark: darkTheme,
+  light: theme,
 };
