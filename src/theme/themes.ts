@@ -32,7 +32,12 @@ export const theme = createTheme({
     border: palette.lightGray,
     notification: palette.fireRed,
   },
-  spacing: {},
+  spacing: {
+    s: 8,
+    m: 16,
+    l: 24,
+    xl: 40,
+  },
 });
 
 export const darkTheme: Theme = {
