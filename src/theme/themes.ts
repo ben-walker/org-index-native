@@ -38,6 +38,13 @@ export const theme = createTheme({
     l: 24,
     xl: 40,
   },
+  textVariants: {
+    body: {
+      color: "text",
+      fontSize: 16,
+      lineHeight: 24,
+    },
+  },
 });
 
 export const darkTheme: Theme = {
