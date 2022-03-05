@@ -12,6 +12,7 @@ export const FeedScreen = () => {
     <FlatList
       data={data?.organizations}
       keyExtractor={({ id }) => id}
+      onEndReached={() => console.log("onEndReached")}
       onEndReachedThreshold={LIST_END_REACHED_THRESHOLD}
       onRefresh={() =>
         void (async () => {
