@@ -1,3 +1,3 @@
-import { TypePolicies } from "@apollo/client";
+import { StrictTypedTypePolicies } from "../generated/apollo";
 
-export const typePolicies: TypePolicies = {};
+export const typePolicies: StrictTypedTypePolicies = {};

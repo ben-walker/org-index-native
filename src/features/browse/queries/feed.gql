@@ -1,0 +1,7 @@
+query feed {
+  organizations {
+    createdAt
+    id
+    name
+  }
+}

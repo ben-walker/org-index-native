@@ -1,0 +1,17 @@
+schema: ${CODEGEN_SCHEMA:http://localhost:4000/graphql}
+documents: src/**/*.gql
+config:
+  scalars:
+    DateTime: Date
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - typed-document-node
+      - typescript
+      - typescript-operations
+  src/generated/apollo.ts:
+    plugins:
+      - typescript-apollo-client-helpers
+hooks:
+  afterAllFileWrite:
+    - eslint --fix
