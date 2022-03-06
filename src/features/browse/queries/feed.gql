@@ -1,5 +1,5 @@
-query feed {
-  organizations {
+query feed($take: Int) {
+  organizations(take: $take) {
     createdAt
     id
     name
