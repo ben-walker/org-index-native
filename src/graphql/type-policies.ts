@@ -1,3 +1,7 @@
 import { StrictTypedTypePolicies } from "../generated/apollo";
 
-export const typePolicies: StrictTypedTypePolicies = {};
+export const typePolicies: StrictTypedTypePolicies = {
+  Query: {
+    fields: { organizations: {} },
+  },
+};
