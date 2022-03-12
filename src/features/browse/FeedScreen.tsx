@@ -1,26 +1,43 @@
 import { useQuery } from "@apollo/client";
-import { FlatList } from "react-native";
+import { useCallback } from "react";
+import { FlatList, ListRenderItem } from "react-native";
 
-import { FeedDocument } from "../../generated/graphql";
-import { LIST_END_REACHED_THRESHOLD, Text } from "../common";
+import { FeedDocument, Organization } from "../../generated/graphql";
+import { LIST_END_REACHED_THRESHOLD, LIST_PAGE_SIZE, Text } from "../common";
 
 export const FeedScreen = () => {
-  const { data, loading, refetch } = useQuery(FeedDocument);
+  const { data, fetchMore, loading, refetch } = useQuery(FeedDocument, {
+    variables: { take: LIST_PAGE_SIZE },
+  });
 
-  // TODO: use callbacks for FlatList props, add pagination
+  const keyExtractor = useCallback(({ id }: Organization) => id, []);
+
+  const renderItem: ListRenderItem<Organization> = useCallback(
+    ({ item: { name } }) => <Text variant="body">{name}</Text>,
+    []
+  );
+
+  const handleRefresh = useCallback(() => void refetch(), [refetch]);
+
+  const handleEndReached = useCallback(() => {
+    const { id } = data?.organizations.slice(-1)[0] || {};
+
+    if (!id) {
+      return;
+    }
+
+    void fetchMore({ variables: { cursor: { id }, skip: 1 } });
+  }, [data?.organizations, fetchMore]);
+
   return (
     <FlatList
       data={data?.organizations}
-      keyExtractor={({ id }) => id}
-      onEndReached={() => console.log("onEndReached")}
+      keyExtractor={keyExtractor}
+      onEndReached={handleEndReached}
       onEndReachedThreshold={LIST_END_REACHED_THRESHOLD}
-      onRefresh={() =>
-        void (async () => {
-          await refetch();
-        })
-      }
+      onRefresh={handleRefresh}
       refreshing={loading}
-      renderItem={({ item: { name } }) => <Text variant="body">{name}</Text>}
+      renderItem={renderItem}
     />
   );
 };
