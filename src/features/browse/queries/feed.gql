@@ -1,5 +1,5 @@
-query feed($take: Int, $cursor: OrganizationWhereUniqueInput) {
-  organizations(take: $take, cursor: $cursor) {
+query feed($take: Int, $skip: Int, $cursor: OrganizationWhereUniqueInput) {
+  organizations(take: $take, skip: $skip, cursor: $cursor) {
     createdAt
     id
     name
