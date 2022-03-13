@@ -17,6 +17,13 @@ export type Scalars = {
   DateTime: Date;
 };
 
+export type AggregateContribution = {
+  __typename?: 'AggregateContribution';
+  _count?: Maybe<ContributionCountAggregate>;
+  _max?: Maybe<ContributionMaxAggregate>;
+  _min?: Maybe<ContributionMinAggregate>;
+};
+
 export type AggregateOrganization = {
   __typename?: 'AggregateOrganization';
   _count?: Maybe<OrganizationCountAggregate>;
@@ -29,6 +36,135 @@ export type AggregateUser = {
   _count?: Maybe<UserCountAggregate>;
   _max?: Maybe<UserMaxAggregate>;
   _min?: Maybe<UserMinAggregate>;
+};
+
+export type Contribution = {
+  __typename?: 'Contribution';
+  createdAt: Scalars['DateTime'];
+  id: Scalars['String'];
+  organization: Organization;
+  organizationId: Scalars['String'];
+  user: User;
+  userId: Scalars['String'];
+};
+
+export type ContributionCountAggregate = {
+  __typename?: 'ContributionCountAggregate';
+  _all: Scalars['Int'];
+  createdAt: Scalars['Int'];
+  id: Scalars['Int'];
+  organizationId: Scalars['Int'];
+  userId: Scalars['Int'];
+};
+
+export type ContributionCountOrderByAggregateInput = {
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type ContributionGroupBy = {
+  __typename?: 'ContributionGroupBy';
+  _count?: Maybe<ContributionCountAggregate>;
+  _max?: Maybe<ContributionMaxAggregate>;
+  _min?: Maybe<ContributionMinAggregate>;
+  createdAt: Scalars['DateTime'];
+  id: Scalars['String'];
+  organizationId: Scalars['String'];
+  userId: Scalars['String'];
+};
+
+export type ContributionListRelationFilter = {
+  every?: InputMaybe<ContributionWhereInput>;
+  none?: InputMaybe<ContributionWhereInput>;
+  some?: InputMaybe<ContributionWhereInput>;
+};
+
+export type ContributionMaxAggregate = {
+  __typename?: 'ContributionMaxAggregate';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  organizationId?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['String']>;
+};
+
+export type ContributionMaxOrderByAggregateInput = {
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type ContributionMinAggregate = {
+  __typename?: 'ContributionMinAggregate';
+  createdAt?: Maybe<Scalars['DateTime']>;
+  id?: Maybe<Scalars['String']>;
+  organizationId?: Maybe<Scalars['String']>;
+  userId?: Maybe<Scalars['String']>;
+};
+
+export type ContributionMinOrderByAggregateInput = {
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type ContributionOrderByRelationAggregateInput = {
+  _count?: InputMaybe<SortOrder>;
+};
+
+export type ContributionOrderByWithAggregationInput = {
+  _count?: InputMaybe<ContributionCountOrderByAggregateInput>;
+  _max?: InputMaybe<ContributionMaxOrderByAggregateInput>;
+  _min?: InputMaybe<ContributionMinOrderByAggregateInput>;
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  organizationId?: InputMaybe<SortOrder>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export type ContributionOrderByWithRelationInput = {
+  createdAt?: InputMaybe<SortOrder>;
+  id?: InputMaybe<SortOrder>;
+  organization?: InputMaybe<OrganizationOrderByWithRelationInput>;
+  organizationId?: InputMaybe<SortOrder>;
+  user?: InputMaybe<UserOrderByWithRelationInput>;
+  userId?: InputMaybe<SortOrder>;
+};
+
+export enum ContributionScalarFieldEnum {
+  CreatedAt = 'createdAt',
+  Id = 'id',
+  OrganizationId = 'organizationId',
+  UserId = 'userId'
+}
+
+export type ContributionScalarWhereWithAggregatesInput = {
+  AND?: InputMaybe<Array<ContributionScalarWhereWithAggregatesInput>>;
+  NOT?: InputMaybe<Array<ContributionScalarWhereWithAggregatesInput>>;
+  OR?: InputMaybe<Array<ContributionScalarWhereWithAggregatesInput>>;
+  createdAt?: InputMaybe<DateTimeWithAggregatesFilter>;
+  id?: InputMaybe<StringWithAggregatesFilter>;
+  organizationId?: InputMaybe<StringWithAggregatesFilter>;
+  userId?: InputMaybe<StringWithAggregatesFilter>;
+};
+
+export type ContributionWhereInput = {
+  AND?: InputMaybe<Array<ContributionWhereInput>>;
+  NOT?: InputMaybe<Array<ContributionWhereInput>>;
+  OR?: InputMaybe<Array<ContributionWhereInput>>;
+  createdAt?: InputMaybe<DateTimeFilter>;
+  id?: InputMaybe<StringFilter>;
+  organization?: InputMaybe<OrganizationRelationFilter>;
+  organizationId?: InputMaybe<StringFilter>;
+  user?: InputMaybe<UserRelationFilter>;
+  userId?: InputMaybe<StringFilter>;
+};
+
+export type ContributionWhereUniqueInput = {
+  id?: InputMaybe<Scalars['String']>;
 };
 
 export type DateTimeFilter = {
@@ -186,9 +322,26 @@ export type NestedStringWithAggregatesFilter = {
 
 export type Organization = {
   __typename?: 'Organization';
+  _count?: Maybe<OrganizationCount>;
+  contributions: Array<Contribution>;
   createdAt: Scalars['DateTime'];
   id: Scalars['String'];
   name: Scalars['String'];
+};
+
+
+export type OrganizationContributionsArgs = {
+  cursor?: InputMaybe<ContributionWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ContributionScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ContributionOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContributionWhereInput>;
+};
+
+export type OrganizationCount = {
+  __typename?: 'OrganizationCount';
+  contributions: Scalars['Int'];
 };
 
 export type OrganizationCountAggregate = {
@@ -251,9 +404,15 @@ export type OrganizationOrderByWithAggregationInput = {
 };
 
 export type OrganizationOrderByWithRelationInput = {
+  contributions?: InputMaybe<ContributionOrderByRelationAggregateInput>;
   createdAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
   name?: InputMaybe<SortOrder>;
+};
+
+export type OrganizationRelationFilter = {
+  is?: InputMaybe<OrganizationWhereInput>;
+  isNot?: InputMaybe<OrganizationWhereInput>;
 };
 
 export enum OrganizationScalarFieldEnum {
@@ -275,6 +434,7 @@ export type OrganizationWhereInput = {
   AND?: InputMaybe<Array<OrganizationWhereInput>>;
   NOT?: InputMaybe<Array<OrganizationWhereInput>>;
   OR?: InputMaybe<Array<OrganizationWhereInput>>;
+  contributions?: InputMaybe<ContributionListRelationFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
   id?: InputMaybe<StringFilter>;
   name?: InputMaybe<StringFilter>;
@@ -286,16 +446,30 @@ export type OrganizationWhereUniqueInput = {
 
 export type Query = {
   __typename?: 'Query';
+  aggregateContribution: AggregateContribution;
   aggregateOrganization: AggregateOrganization;
   aggregateUser: AggregateUser;
+  contribution?: Maybe<Contribution>;
+  contributions: Array<Contribution>;
+  findFirstContribution?: Maybe<Contribution>;
   findFirstOrganization?: Maybe<Organization>;
   findFirstUser?: Maybe<User>;
+  groupByContribution: Array<ContributionGroupBy>;
   groupByOrganization: Array<OrganizationGroupBy>;
   groupByUser: Array<UserGroupBy>;
   organization?: Maybe<Organization>;
   organizations: Array<Organization>;
   user?: Maybe<User>;
   users: Array<User>;
+};
+
+
+export type QueryAggregateContributionArgs = {
+  cursor?: InputMaybe<ContributionWhereUniqueInput>;
+  orderBy?: InputMaybe<Array<ContributionOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContributionWhereInput>;
 };
 
 
@@ -317,6 +491,31 @@ export type QueryAggregateUserArgs = {
 };
 
 
+export type QueryContributionArgs = {
+  where: ContributionWhereUniqueInput;
+};
+
+
+export type QueryContributionsArgs = {
+  cursor?: InputMaybe<ContributionWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ContributionScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ContributionOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContributionWhereInput>;
+};
+
+
+export type QueryFindFirstContributionArgs = {
+  cursor?: InputMaybe<ContributionWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ContributionScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ContributionOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContributionWhereInput>;
+};
+
+
 export type QueryFindFirstOrganizationArgs = {
   cursor?: InputMaybe<OrganizationWhereUniqueInput>;
   distinct?: InputMaybe<Array<OrganizationScalarFieldEnum>>;
@@ -334,6 +533,16 @@ export type QueryFindFirstUserArgs = {
   skip?: InputMaybe<Scalars['Int']>;
   take?: InputMaybe<Scalars['Int']>;
   where?: InputMaybe<UserWhereInput>;
+};
+
+
+export type QueryGroupByContributionArgs = {
+  by: Array<ContributionScalarFieldEnum>;
+  having?: InputMaybe<ContributionScalarWhereWithAggregatesInput>;
+  orderBy?: InputMaybe<Array<ContributionOrderByWithAggregationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContributionWhereInput>;
 };
 
 
@@ -431,10 +640,28 @@ export type StringWithAggregatesFilter = {
 
 export type User = {
   __typename?: 'User';
+  _count?: Maybe<UserCount>;
+  contributions: Array<Contribution>;
   createdAt: Scalars['DateTime'];
   email: Scalars['String'];
   emailVerifiedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
+  name: Scalars['String'];
+};
+
+
+export type UserContributionsArgs = {
+  cursor?: InputMaybe<ContributionWhereUniqueInput>;
+  distinct?: InputMaybe<Array<ContributionScalarFieldEnum>>;
+  orderBy?: InputMaybe<Array<ContributionOrderByWithRelationInput>>;
+  skip?: InputMaybe<Scalars['Int']>;
+  take?: InputMaybe<Scalars['Int']>;
+  where?: InputMaybe<ContributionWhereInput>;
+};
+
+export type UserCount = {
+  __typename?: 'UserCount';
+  contributions: Scalars['Int'];
 };
 
 export type UserCountAggregate = {
@@ -444,6 +671,7 @@ export type UserCountAggregate = {
   email: Scalars['Int'];
   emailVerifiedAt: Scalars['Int'];
   id: Scalars['Int'];
+  name: Scalars['Int'];
 };
 
 export type UserCountOrderByAggregateInput = {
@@ -451,6 +679,7 @@ export type UserCountOrderByAggregateInput = {
   email?: InputMaybe<SortOrder>;
   emailVerifiedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
 };
 
 export type UserGroupBy = {
@@ -462,6 +691,7 @@ export type UserGroupBy = {
   email: Scalars['String'];
   emailVerifiedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
+  name: Scalars['String'];
 };
 
 export type UserMaxAggregate = {
@@ -470,6 +700,7 @@ export type UserMaxAggregate = {
   email?: Maybe<Scalars['String']>;
   emailVerifiedAt?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type UserMaxOrderByAggregateInput = {
@@ -477,6 +708,7 @@ export type UserMaxOrderByAggregateInput = {
   email?: InputMaybe<SortOrder>;
   emailVerifiedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
 };
 
 export type UserMinAggregate = {
@@ -485,6 +717,7 @@ export type UserMinAggregate = {
   email?: Maybe<Scalars['String']>;
   emailVerifiedAt?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type UserMinOrderByAggregateInput = {
@@ -492,6 +725,7 @@ export type UserMinOrderByAggregateInput = {
   email?: InputMaybe<SortOrder>;
   emailVerifiedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
 };
 
 export type UserOrderByWithAggregationInput = {
@@ -502,20 +736,29 @@ export type UserOrderByWithAggregationInput = {
   email?: InputMaybe<SortOrder>;
   emailVerifiedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
 };
 
 export type UserOrderByWithRelationInput = {
+  contributions?: InputMaybe<ContributionOrderByRelationAggregateInput>;
   createdAt?: InputMaybe<SortOrder>;
   email?: InputMaybe<SortOrder>;
   emailVerifiedAt?: InputMaybe<SortOrder>;
   id?: InputMaybe<SortOrder>;
+  name?: InputMaybe<SortOrder>;
+};
+
+export type UserRelationFilter = {
+  is?: InputMaybe<UserWhereInput>;
+  isNot?: InputMaybe<UserWhereInput>;
 };
 
 export enum UserScalarFieldEnum {
   CreatedAt = 'createdAt',
   Email = 'email',
   EmailVerifiedAt = 'emailVerifiedAt',
-  Id = 'id'
+  Id = 'id',
+  Name = 'name'
 }
 
 export type UserScalarWhereWithAggregatesInput = {
@@ -526,16 +769,19 @@ export type UserScalarWhereWithAggregatesInput = {
   email?: InputMaybe<StringWithAggregatesFilter>;
   emailVerifiedAt?: InputMaybe<DateTimeNullableWithAggregatesFilter>;
   id?: InputMaybe<StringWithAggregatesFilter>;
+  name?: InputMaybe<StringWithAggregatesFilter>;
 };
 
 export type UserWhereInput = {
   AND?: InputMaybe<Array<UserWhereInput>>;
   NOT?: InputMaybe<Array<UserWhereInput>>;
   OR?: InputMaybe<Array<UserWhereInput>>;
+  contributions?: InputMaybe<ContributionListRelationFilter>;
   createdAt?: InputMaybe<DateTimeFilter>;
   email?: InputMaybe<StringFilter>;
   emailVerifiedAt?: InputMaybe<DateTimeNullableFilter>;
   id?: InputMaybe<StringFilter>;
+  name?: InputMaybe<StringFilter>;
 };
 
 export type UserWhereUniqueInput = {
