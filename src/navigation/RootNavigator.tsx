@@ -1,7 +1,11 @@
 import { Feather } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import { BrowseNavigator, ProfileNavigator } from "../features";
+import {
+  BrowseNavigator,
+  ContributionsNavigator,
+  ProfileNavigator,
+} from "../features";
 import { tabBarIcons } from "./constants";
 import { RootTabParamList, RootTabScreens } from "./types";
 
@@ -19,6 +23,10 @@ export const RootNavigator = () => (
     })}
   >
     <Tab.Screen name={RootTabScreens.Browse} component={BrowseNavigator} />
+    <Tab.Screen
+      name={RootTabScreens.Contributions}
+      component={ContributionsNavigator}
+    />
     <Tab.Screen name={RootTabScreens.Profile} component={ProfileNavigator} />
   </Tab.Navigator>
 );

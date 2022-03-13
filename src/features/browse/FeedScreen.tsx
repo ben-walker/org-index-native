@@ -29,6 +29,8 @@ export const FeedScreen = () => {
     void fetchMore({ variables: { cursor: { id }, skip: 1 } });
   }, [data?.organizations, fetchMore]);
 
+  // TODO: fix data prop type issue
+  // TODO: fix duplicate keys on fast scrolling
   return (
     <FlatList
       data={data?.organizations}
