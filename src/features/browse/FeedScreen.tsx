@@ -2,17 +2,18 @@ import { useQuery } from "@apollo/client";
 import { useCallback } from "react";
 import { FlatList, ListRenderItem } from "react-native";
 
-import { FeedDocument, Organization } from "../../generated/graphql";
+import { FeedDocument } from "../../generated/graphql";
 import { LIST_END_REACHED_THRESHOLD, LIST_PAGE_SIZE, Text } from "../common";
+import { FeedOrganization } from "./types";
 
 export const FeedScreen = () => {
   const { data, fetchMore, loading, refetch } = useQuery(FeedDocument, {
     variables: { take: LIST_PAGE_SIZE },
   });
 
-  const keyExtractor = useCallback(({ id }: Organization) => id, []);
+  const keyExtractor = useCallback(({ id }: FeedOrganization) => id, []);
 
-  const renderItem: ListRenderItem<Organization> = useCallback(
+  const renderItem: ListRenderItem<FeedOrganization> = useCallback(
     ({ item: { name } }) => <Text variant="body">{name}</Text>,
     []
   );
@@ -29,7 +30,6 @@ export const FeedScreen = () => {
     void fetchMore({ variables: { cursor: { id }, skip: 1 } });
   }, [data?.organizations, fetchMore]);
 
-  // TODO: fix data prop type issue
   // TODO: fix duplicate keys on fast scrolling
   return (
     <FlatList
