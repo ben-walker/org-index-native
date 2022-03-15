@@ -19,7 +19,9 @@ export const FeedScreen = () => {
 
   const renderItem: ListRenderItem<FeedOrganization> = useCallback(
     ({ item: { id, name } }) => (
-      <TouchableHighlight onPress={() => navigation.navigate("Organization")}>
+      <TouchableHighlight
+        onPress={() => navigation.navigate("Organization", { name })}
+      >
         <Text variant="body">
           {id} {name}
         </Text>
