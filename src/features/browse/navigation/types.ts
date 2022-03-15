@@ -1,9 +1,9 @@
-export enum BrowseStackScreens {
-  Feed = "Feed",
-  Organization = "Organization",
-}
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 export type BrowseStackParamList = {
-  [BrowseStackScreens.Feed]: undefined;
-  [BrowseStackScreens.Organization]: undefined;
+  Feed: undefined;
+  Organization: undefined;
 };
+
+export type BrowseStackNavigation<T extends keyof BrowseStackParamList> =
+  NativeStackNavigationProp<BrowseStackParamList, T>;

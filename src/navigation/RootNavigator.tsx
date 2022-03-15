@@ -7,7 +7,7 @@ import {
   ProfileNavigator,
 } from "../features";
 import { tabBarIcons } from "./constants";
-import { RootTabParamList, RootTabScreens } from "./types";
+import { RootTabParamList } from "./types";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
 
@@ -22,11 +22,8 @@ export const RootNavigator = () => (
       },
     })}
   >
-    <Tab.Screen name={RootTabScreens.Browse} component={BrowseNavigator} />
-    <Tab.Screen
-      name={RootTabScreens.Contributions}
-      component={ContributionsNavigator}
-    />
-    <Tab.Screen name={RootTabScreens.Profile} component={ProfileNavigator} />
+    <Tab.Screen name="Browse" component={BrowseNavigator} />
+    <Tab.Screen name="Contributions" component={ContributionsNavigator} />
+    <Tab.Screen name="Profile" component={ProfileNavigator} />
   </Tab.Navigator>
 );

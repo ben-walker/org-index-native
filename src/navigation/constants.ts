@@ -1,7 +1,7 @@
-import { RootTabScreens, TabBarIcons } from "./types";
+import { TabBarIcons } from "./types";
 
 export const tabBarIcons: TabBarIcons = {
-  [RootTabScreens.Browse]: "box",
-  [RootTabScreens.Contributions]: "bar-chart-2",
-  [RootTabScreens.Profile]: "user",
+  Browse: "box",
+  Contributions: "bar-chart-2",
+  Profile: "user",
 };
