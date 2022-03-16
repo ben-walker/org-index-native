@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { FeedScreen } from "../FeedScreen";
-import { OrganizationScreen } from "../OrganizationScreen";
+import { FeedScreen } from "./FeedScreen";
+import { OrganizationScreen } from "./OrganizationScreen";
 import { BrowseStackParamList } from "./types";
 
 const Stack = createNativeStackNavigator<BrowseStackParamList>();

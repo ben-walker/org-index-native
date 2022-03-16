@@ -1,11 +1,9 @@
 import { Feather } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import {
-  BrowseNavigator,
-  ContributionsNavigator,
-  ProfileNavigator,
-} from "../features";
+import { BrowseNavigator } from "../features/browse";
+import { ContributionsNavigator } from "../features/contributions";
+import { ProfileNavigator } from "../features/profile";
 import { TAB_BAR_ICONS } from "./constants";
 import { RootTabParamList } from "./types";
 

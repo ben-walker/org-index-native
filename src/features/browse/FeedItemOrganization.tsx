@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { TouchableOpacity } from "react-native";
 
 import { Text } from "../common";
-import { BrowseStackNavigation } from "./navigation";
+import { BrowseStackNavigation } from "./types";
 import { FeedOrganization } from "./types";
 
 type Props = {
