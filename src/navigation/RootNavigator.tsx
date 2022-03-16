@@ -6,7 +6,7 @@ import {
   ContributionsNavigator,
   ProfileNavigator,
 } from "../features";
-import { tabBarIcons } from "./constants";
+import { TAB_BAR_ICONS } from "./constants";
 import { RootTabParamList } from "./types";
 
 const Tab = createBottomTabNavigator<RootTabParamList>();
@@ -16,7 +16,7 @@ export const RootNavigator = () => (
     screenOptions={({ route }) => ({
       headerShown: false,
       tabBarIcon: ({ color, size }) => {
-        const name = tabBarIcons[route.name];
+        const name = TAB_BAR_ICONS[route.name];
 
         return <Feather name={name} color={color} size={size} />;
       },
