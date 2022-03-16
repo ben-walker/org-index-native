@@ -8,7 +8,11 @@ const Stack = createNativeStackNavigator<BrowseStackParamList>();
 
 export const BrowseNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Feed" component={FeedScreen} />
+    <Stack.Screen
+      name="Feed"
+      component={FeedScreen}
+      options={{ title: "Browse" }}
+    />
     <Stack.Screen
       name="Organization"
       component={OrganizationScreen}
