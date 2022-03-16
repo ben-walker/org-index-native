@@ -7,6 +7,10 @@ const Stack = createNativeStackNavigator<ContributionsStackParamList>();
 
 export const ContributionsNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Archive" component={ArchiveScreen} />
+    <Stack.Screen
+      name="Archive"
+      component={ArchiveScreen}
+      options={{ title: "Contributions" }}
+    />
   </Stack.Navigator>
 );

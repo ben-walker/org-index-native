@@ -7,6 +7,10 @@ const Stack = createNativeStackNavigator<ProfileStackParamList>();
 
 export const ProfileNavigator = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Overview" component={OverviewScreen} />
+    <Stack.Screen
+      name="Overview"
+      component={OverviewScreen}
+      options={{ title: "Profile" }}
+    />
   </Stack.Navigator>
 );
