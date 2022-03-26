@@ -17,6 +17,11 @@ export type AggregateUserFieldPolicy = {
 	_max?: FieldPolicy<any> | FieldReadFunction<any>,
 	_min?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type AuthPayloadKeySpecifier = ('accessToken' | 'user' | AuthPayloadKeySpecifier)[];
+export type AuthPayloadFieldPolicy = {
+	accessToken?: FieldPolicy<any> | FieldReadFunction<any>,
+	user?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type ContributionKeySpecifier = ('createdAt' | 'id' | 'organization' | 'organizationId' | 'user' | 'userId' | ContributionKeySpecifier)[];
 export type ContributionFieldPolicy = {
 	createdAt?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -58,6 +63,11 @@ export type ContributionMinAggregateFieldPolicy = {
 	organizationId?: FieldPolicy<any> | FieldReadFunction<any>,
 	userId?: FieldPolicy<any> | FieldReadFunction<any>
 };
+export type MutationKeySpecifier = ('logIn' | 'signUp' | MutationKeySpecifier)[];
+export type MutationFieldPolicy = {
+	logIn?: FieldPolicy<any> | FieldReadFunction<any>,
+	signUp?: FieldPolicy<any> | FieldReadFunction<any>
+};
 export type OrganizationKeySpecifier = ('_count' | 'contributions' | 'createdAt' | 'id' | 'name' | OrganizationKeySpecifier)[];
 export type OrganizationFieldPolicy = {
 	_count?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -98,7 +108,7 @@ export type OrganizationMinAggregateFieldPolicy = {
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
 	name?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type QueryKeySpecifier = ('aggregateContribution' | 'aggregateOrganization' | 'aggregateUser' | 'contribution' | 'contributions' | 'findFirstContribution' | 'findFirstOrganization' | 'findFirstUser' | 'groupByContribution' | 'groupByOrganization' | 'groupByUser' | 'organization' | 'organizations' | 'user' | 'users' | QueryKeySpecifier)[];
+export type QueryKeySpecifier = ('aggregateContribution' | 'aggregateOrganization' | 'aggregateUser' | 'contribution' | 'contributions' | 'findFirstContribution' | 'findFirstOrganization' | 'findFirstUser' | 'groupByContribution' | 'groupByOrganization' | 'groupByUser' | 'organization' | 'organizations' | 'user' | 'users' | 'viewer' | QueryKeySpecifier)[];
 export type QueryFieldPolicy = {
 	aggregateContribution?: FieldPolicy<any> | FieldReadFunction<any>,
 	aggregateOrganization?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -114,7 +124,8 @@ export type QueryFieldPolicy = {
 	organization?: FieldPolicy<any> | FieldReadFunction<any>,
 	organizations?: FieldPolicy<any> | FieldReadFunction<any>,
 	user?: FieldPolicy<any> | FieldReadFunction<any>,
-	users?: FieldPolicy<any> | FieldReadFunction<any>
+	users?: FieldPolicy<any> | FieldReadFunction<any>,
+	viewer?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type UserKeySpecifier = ('_count' | 'contributions' | 'createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | UserKeySpecifier)[];
 export type UserFieldPolicy = {
@@ -130,16 +141,17 @@ export type UserCountKeySpecifier = ('contributions' | UserCountKeySpecifier)[];
 export type UserCountFieldPolicy = {
 	contributions?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type UserCountAggregateKeySpecifier = ('_all' | 'createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | UserCountAggregateKeySpecifier)[];
+export type UserCountAggregateKeySpecifier = ('_all' | 'createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | 'passwordHash' | UserCountAggregateKeySpecifier)[];
 export type UserCountAggregateFieldPolicy = {
 	_all?: FieldPolicy<any> | FieldReadFunction<any>,
 	createdAt?: FieldPolicy<any> | FieldReadFunction<any>,
 	email?: FieldPolicy<any> | FieldReadFunction<any>,
 	emailVerifiedAt?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	passwordHash?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type UserGroupByKeySpecifier = ('_count' | '_max' | '_min' | 'createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | UserGroupByKeySpecifier)[];
+export type UserGroupByKeySpecifier = ('_count' | '_max' | '_min' | 'createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | 'passwordHash' | UserGroupByKeySpecifier)[];
 export type UserGroupByFieldPolicy = {
 	_count?: FieldPolicy<any> | FieldReadFunction<any>,
 	_max?: FieldPolicy<any> | FieldReadFunction<any>,
@@ -148,23 +160,26 @@ export type UserGroupByFieldPolicy = {
 	email?: FieldPolicy<any> | FieldReadFunction<any>,
 	emailVerifiedAt?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	passwordHash?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type UserMaxAggregateKeySpecifier = ('createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | UserMaxAggregateKeySpecifier)[];
+export type UserMaxAggregateKeySpecifier = ('createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | 'passwordHash' | UserMaxAggregateKeySpecifier)[];
 export type UserMaxAggregateFieldPolicy = {
 	createdAt?: FieldPolicy<any> | FieldReadFunction<any>,
 	email?: FieldPolicy<any> | FieldReadFunction<any>,
 	emailVerifiedAt?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	passwordHash?: FieldPolicy<any> | FieldReadFunction<any>
 };
-export type UserMinAggregateKeySpecifier = ('createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | UserMinAggregateKeySpecifier)[];
+export type UserMinAggregateKeySpecifier = ('createdAt' | 'email' | 'emailVerifiedAt' | 'id' | 'name' | 'passwordHash' | UserMinAggregateKeySpecifier)[];
 export type UserMinAggregateFieldPolicy = {
 	createdAt?: FieldPolicy<any> | FieldReadFunction<any>,
 	email?: FieldPolicy<any> | FieldReadFunction<any>,
 	emailVerifiedAt?: FieldPolicy<any> | FieldReadFunction<any>,
 	id?: FieldPolicy<any> | FieldReadFunction<any>,
-	name?: FieldPolicy<any> | FieldReadFunction<any>
+	name?: FieldPolicy<any> | FieldReadFunction<any>,
+	passwordHash?: FieldPolicy<any> | FieldReadFunction<any>
 };
 export type StrictTypedTypePolicies = {
 	AggregateContribution?: Omit<TypePolicy, "fields" | "keyFields"> & {
@@ -178,6 +193,10 @@ export type StrictTypedTypePolicies = {
 	AggregateUser?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | AggregateUserKeySpecifier | (() => undefined | AggregateUserKeySpecifier),
 		fields?: AggregateUserFieldPolicy,
+	},
+	AuthPayload?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | AuthPayloadKeySpecifier | (() => undefined | AuthPayloadKeySpecifier),
+		fields?: AuthPayloadFieldPolicy,
 	},
 	Contribution?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ContributionKeySpecifier | (() => undefined | ContributionKeySpecifier),
@@ -198,6 +217,10 @@ export type StrictTypedTypePolicies = {
 	ContributionMinAggregate?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | ContributionMinAggregateKeySpecifier | (() => undefined | ContributionMinAggregateKeySpecifier),
 		fields?: ContributionMinAggregateFieldPolicy,
+	},
+	Mutation?: Omit<TypePolicy, "fields" | "keyFields"> & {
+		keyFields?: false | MutationKeySpecifier | (() => undefined | MutationKeySpecifier),
+		fields?: MutationFieldPolicy,
 	},
 	Organization?: Omit<TypePolicy, "fields" | "keyFields"> & {
 		keyFields?: false | OrganizationKeySpecifier | (() => undefined | OrganizationKeySpecifier),

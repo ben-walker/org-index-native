@@ -38,6 +38,12 @@ export type AggregateUser = {
   _min?: Maybe<UserMinAggregate>;
 };
 
+export type AuthPayload = {
+  __typename?: 'AuthPayload';
+  accessToken: Scalars['String'];
+  user: User;
+};
+
 export type Contribution = {
   __typename?: 'Contribution';
   createdAt: Scalars['DateTime'];
@@ -215,6 +221,27 @@ export type DateTimeWithAggregatesFilter = {
   lte?: InputMaybe<Scalars['DateTime']>;
   not?: InputMaybe<NestedDateTimeWithAggregatesFilter>;
   notIn?: InputMaybe<Array<Scalars['DateTime']>>;
+};
+
+export type LogInInput = {
+  email: Scalars['String'];
+  password: Scalars['String'];
+};
+
+export type Mutation = {
+  __typename?: 'Mutation';
+  logIn: AuthPayload;
+  signUp: AuthPayload;
+};
+
+
+export type MutationLogInArgs = {
+  userData: LogInInput;
+};
+
+
+export type MutationSignUpArgs = {
+  userData: SignUpInput;
 };
 
 export type NestedDateTimeFilter = {
@@ -461,6 +488,7 @@ export type Query = {
   organizations: Array<Organization>;
   user?: Maybe<User>;
   users: Array<User>;
+  viewer: User;
 };
 
 
@@ -600,6 +628,12 @@ export enum QueryMode {
   Insensitive = 'insensitive'
 }
 
+export type SignUpInput = {
+  email: Scalars['String'];
+  name: Scalars['String'];
+  password: Scalars['String'];
+};
+
 export enum SortOrder {
   Asc = 'asc',
   Desc = 'desc'
@@ -672,6 +706,7 @@ export type UserCountAggregate = {
   emailVerifiedAt: Scalars['Int'];
   id: Scalars['Int'];
   name: Scalars['Int'];
+  passwordHash: Scalars['Int'];
 };
 
 export type UserCountOrderByAggregateInput = {
@@ -692,6 +727,7 @@ export type UserGroupBy = {
   emailVerifiedAt?: Maybe<Scalars['DateTime']>;
   id: Scalars['String'];
   name: Scalars['String'];
+  passwordHash: Scalars['String'];
 };
 
 export type UserMaxAggregate = {
@@ -701,6 +737,7 @@ export type UserMaxAggregate = {
   emailVerifiedAt?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  passwordHash?: Maybe<Scalars['String']>;
 };
 
 export type UserMaxOrderByAggregateInput = {
@@ -718,6 +755,7 @@ export type UserMinAggregate = {
   emailVerifiedAt?: Maybe<Scalars['DateTime']>;
   id?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  passwordHash?: Maybe<Scalars['String']>;
 };
 
 export type UserMinOrderByAggregateInput = {
@@ -758,7 +796,8 @@ export enum UserScalarFieldEnum {
   Email = 'email',
   EmailVerifiedAt = 'emailVerifiedAt',
   Id = 'id',
-  Name = 'name'
+  Name = 'name',
+  PasswordHash = 'passwordHash'
 }
 
 export type UserScalarWhereWithAggregatesInput = {
