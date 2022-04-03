@@ -7,7 +7,7 @@ import { useMemo } from "react";
 import { useColorScheme } from "react-native";
 
 import { client } from "./graphql";
-import { RootNavigator } from "./navigation";
+import { Navigator } from "./navigation";
 import { DEFAULT_SCHEME, themeMap } from "./theme";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <NavigationContainer theme={theme}>
           <StatusBar style="auto" />
-          <RootNavigator />
+          <Navigator />
         </NavigationContainer>
       </ThemeProvider>
     </ApolloProvider>

@@ -1,11 +1,11 @@
 import { Feather } from "@expo/vector-icons";
 
-export type RootTabParamList = {
+export type TabParamList = {
   Browse: undefined;
   Contributions: undefined;
   Profile: undefined;
 };
 
 export type TabBarIcons = {
-  [key in keyof RootTabParamList]: keyof typeof Feather.glyphMap;
+  [key in keyof TabParamList]: keyof typeof Feather.glyphMap;
 };

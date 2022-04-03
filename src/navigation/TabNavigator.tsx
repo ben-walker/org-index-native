@@ -5,11 +5,11 @@ import { BrowseNavigator } from "../features/browse";
 import { ContributionsNavigator } from "../features/contributions";
 import { ProfileNavigator } from "../features/profile";
 import { TAB_BAR_ICONS } from "./constants";
-import { RootTabParamList } from "./types";
+import { TabParamList } from "./types";
 
-const Tab = createBottomTabNavigator<RootTabParamList>();
+const Tab = createBottomTabNavigator<TabParamList>();
 
-export const RootNavigator = () => (
+export const TabNavigator = () => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
       headerShown: false,
