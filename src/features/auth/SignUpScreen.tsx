@@ -34,7 +34,12 @@ export const SignUpScreen = () => {
         control={control}
         name="email"
         render={({ field: { onBlur, onChange, value } }) => (
-          <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+          <TextInput
+            keyboardType="email-address"
+            onBlur={onBlur}
+            onChangeText={onChange}
+            value={value}
+          />
         )}
         rules={{ required: true }}
       />
@@ -52,7 +57,12 @@ export const SignUpScreen = () => {
         control={control}
         name="password"
         render={({ field: { onBlur, onChange, value } }) => (
-          <TextInput onBlur={onBlur} onChangeText={onChange} value={value} />
+          <TextInput
+            onBlur={onBlur}
+            onChangeText={onChange}
+            secureTextEntry
+            value={value}
+          />
         )}
         rules={{ required: true }}
       />
