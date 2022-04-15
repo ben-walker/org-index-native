@@ -4,8 +4,9 @@ import { Controller, useForm } from "react-hook-form";
 import { Button, ScrollView, TextInput } from "react-native";
 
 import { SignUpDocument, SignUpInput } from "../../generated/graphql";
+import { validateEmail } from "../../utils/validators";
 import { Text } from "../common";
-import { STORE_KEY_ACCESS_TOKEN } from "./constants";
+import { FORM_ERROR_EMAIL, STORE_KEY_ACCESS_TOKEN } from "./constants";
 
 export const SignUpScreen = () => {
   const [signUp] = useMutation(SignUpDocument);
@@ -41,7 +42,10 @@ export const SignUpScreen = () => {
             value={value}
           />
         )}
-        rules={{ required: true }}
+        rules={{
+          required: true,
+          validate: (v) => validateEmail(v) || FORM_ERROR_EMAIL,
+        }}
       />
       <Text variant="body">Name</Text>
       <Controller
