@@ -19,14 +19,14 @@ export const FeedScreen = () => {
     []
   );
 
-  const handleEndReached = useCallback(() => {
+  const handleEndReached = useCallback(async () => {
     const { id } = data?.organizations.slice(-1)[0] || {};
 
     if (!id) {
       return;
     }
 
-    fetchMore({ variables: { cursor: { id }, skip: 1 } });
+    await fetchMore({ variables: { cursor: { id }, skip: 1 } });
   }, [data?.organizations, fetchMore]);
 
   // TODO: fix duplicate keys on fast scrolling
