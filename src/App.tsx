@@ -8,12 +8,12 @@ import { useColorScheme } from "react-native";
 
 import { client } from "./graphql";
 import { Navigator } from "./navigation";
-import { DEFAULT_SCHEME, themeMap } from "./theme";
+import { getTheme } from "./theme";
 
 const App = () => {
   const scheme = useColorScheme();
 
-  const theme = useMemo(() => themeMap[scheme || DEFAULT_SCHEME], [scheme]);
+  const theme = useMemo(() => getTheme(scheme), [scheme]);
 
   return (
     <ApolloProvider client={client}>

@@ -1,6 +1,7 @@
 import { createTheme } from "@shopify/restyle";
+import { ColorSchemeName } from "react-native";
 
-import { Theme, ThemeMap } from "./types";
+import { Theme } from "./types";
 
 const palette = {
   pitchBlack: "#010101",
@@ -60,7 +61,13 @@ export const darkTheme: Theme = {
   dark: true,
 };
 
-export const themeMap: ThemeMap = {
-  dark: darkTheme,
-  light: theme,
+export const getTheme = (scheme: ColorSchemeName) => {
+  switch (scheme) {
+    default:
+    case "light":
+      return theme;
+
+    case "dark":
+      return darkTheme;
+  }
 };
