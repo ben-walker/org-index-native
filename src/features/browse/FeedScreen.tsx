@@ -19,8 +19,6 @@ export const FeedScreen = () => {
     []
   );
 
-  const handleRefresh = useCallback(() => void refetch(), [refetch]);
-
   const handleEndReached = useCallback(() => {
     const { id } = data?.organizations.slice(-1)[0] || {};
 
@@ -28,7 +26,7 @@ export const FeedScreen = () => {
       return;
     }
 
-    void fetchMore({ variables: { cursor: { id }, skip: 1 } });
+    fetchMore({ variables: { cursor: { id }, skip: 1 } });
   }, [data?.organizations, fetchMore]);
 
   // TODO: fix duplicate keys on fast scrolling
@@ -38,7 +36,7 @@ export const FeedScreen = () => {
       keyExtractor={keyExtractor}
       onEndReached={handleEndReached}
       onEndReachedThreshold={LIST_END_REACHED_THRESHOLD}
-      onRefresh={handleRefresh}
+      onRefresh={refetch}
       refreshing={loading}
       renderItem={renderItem}
     />
