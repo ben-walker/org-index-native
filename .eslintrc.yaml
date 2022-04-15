@@ -26,9 +26,13 @@ extends:
   - plugin:prettier/recommended
 
 rules:
-  simple-import-sort/imports: "error"
-  simple-import-sort/exports: "error"
-  sort-imports: "off"
+  simple-import-sort/imports: error
+  simple-import-sort/exports: error
+  sort-imports: off
+  "@typescript-eslint/no-misused-promises":
+    - error
+    - checksVoidReturn:
+      arguments: false
 
 settings:
   react:
