@@ -6,8 +6,8 @@ import { StatusBar } from "expo-status-bar";
 import { useMemo } from "react";
 import { useColorScheme } from "react-native";
 
+import { RootNavigator } from "./features/root-navigator";
 import { client } from "./graphql";
-import { Navigator } from "./navigation";
 import { getTheme } from "./theme";
 
 const App = () => {
@@ -20,7 +20,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <NavigationContainer theme={theme}>
           <StatusBar style="auto" />
-          <Navigator />
+          <RootNavigator />
         </NavigationContainer>
       </ThemeProvider>
     </ApolloProvider>
