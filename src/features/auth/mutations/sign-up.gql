@@ -1,4 +1,4 @@
-mutation signUp($userData: SignUpInput!) {
+mutation SignUp($userData: SignUpInput!) {
   signUp(userData: $userData) {
     accessToken
   }
